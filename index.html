@@ -280,6 +280,17 @@
         }
       }
 
+      function envio_contato(){
+        if (validarCamposContato()){
+          var nome = $("#validarNome").val();
+          var numero = $("#validarTelefone").val();
+          var email = $("#validarEmail").val();
+          var mens = $("#validarAreaTexto").val();
+          var enc_mens = encodeURI('Meu nome é '+ nome +' e email ' + email + ' - '+ mens);
+          location.href = "https://wa.me/5591999999999?text=" + enc_mens;
+        }
+      }
+
       function validarCamposContato(){
         limparCamposContato(0);
         var nome = $("#validarNome");
