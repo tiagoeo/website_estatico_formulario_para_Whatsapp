@@ -281,6 +281,7 @@
       }
 
       function validarCamposContato(){
+        limparCamposContato(0);
         var nome = $("#validarNome");
         var telefone = $("#validarTelefone");
         var email = $("#validarEmail");
@@ -342,6 +343,28 @@
             return regex.test(nm);
           }
         }
+
+        function limparCamposContato(tp){
+          if (tp == 1){
+            $('#frmContato').each (function(){
+              this.reset();
+            });
+          }
+
+          $('#validarNome').removeClass('is-invalid is-valid');
+          $('#validarTelefone').removeClass('is-invalid is-valid');
+          $('#validarEmail').removeClass('is-invalid is-valid');
+          $('#validarAreaTexto').removeClass('is-invalid is-valid');
+
+          $('#nomeInvalido').html('');
+          $('#nomeValido').html('');
+          $('#telefoneInvalido').html('');
+          $('#telefoneValido').html('');
+          $('#emailInvalido').html('');
+          $('#emailValido').html('');
+          $('#areaTextoInvalido').html('');
+          $('#areaTextoValido').html('');
+			  }
     </script>
   </body>
 </html>
