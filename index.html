@@ -264,7 +264,7 @@
    
     <script>
       $("#validarTelefone").mask("(00) 0.0000-0009");
-      
+
       function contato_whatsapp(n)
       {
         switch (n) {
@@ -279,6 +279,69 @@
             break;   
         }
       }
+
+      function validarCamposContato(){
+        var nome = $("#validarNome");
+        var telefone = $("#validarTelefone");
+        var email = $("#validarEmail");
+        var areatexto = $("#validarAreaTexto");
+
+        if(!nome.val() || nome.val().length < 5){
+          $('#validarNome').addClass('is-invalid');
+          $('#nomeInvalido').html('Por favor, digite o nome e sobrenome.');
+          return false;
+        }else if(!validaNome(nome.val())){
+          $('#validarNome').addClass('is-invalid');
+          $('#nomeInvalido').html('Caracteres não válidos no campo nome');
+          return false;
+        }else{
+          $('#validarNome').addClass('is-valid');
+          $('#nomeValido').html('Ok!');
+        }
+
+        if (!telefone.val() || telefone.val().length < 15){
+          $('#validarTelefone').addClass('is-invalid');
+          $('#telefoneInvalido').html('Digite um número de telefone.');
+          return false;
+        }else {
+          $('#validarTelefone').addClass('is-valid');
+          $('#telefoneValido').html('Ok!');
+        }
+
+        if(!email.val()){
+          $('#validarEmail').addClass('is-invalid');
+          $('#emailInvalido').html('Digite seu email');
+          return false;
+        }else if(!validaEmail(email.val())){
+          $('#validarEmail').addClass('is-invalid');
+          $('#emailInvalido').html('Formato de email inválido! ex.: exemplo@exemplo.com');
+          return false;
+        }else{
+          $('#validarEmail').addClass('is-valid');
+          $('#emailValido').html('Ok');
+        }
+
+        if(!areatexto.val() || areatexto.val().length < 5){
+          $('#validarAreaTexto').addClass('is-invalid');
+          $('#areaTextoInvalido').html('Digite sua mensagem.');
+          return false;
+        }else{
+          $('#validarAreaTexto').addClass('is-valid');
+          $('#areaTextoValido').html('Ok');
+        }
+
+        return true;
+
+          function validaEmail(em) {
+            var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return regex.test(em);
+          }
+
+          function validaNome(nm) {
+            var regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+            return regex.test(nm);
+          }
+        }
     </script>
   </body>
 </html>
